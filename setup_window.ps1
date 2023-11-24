@@ -1,5 +1,7 @@
 #Run This If Error: Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
 
+
+# ========== Function ========== 
 function Write-Start {
 	param($msg)
 	Write-Host (">> " + $msg) -ForegroundColor Green
@@ -9,7 +11,12 @@ function Write-Done {
 	Write-Host ("DONE!") -ForegroundColor Blue
 }
 
-# Start
+function Write-Error {
+	param($msg)
+	Write-Host (">> " + $msg) -ForegroundColor Red
+}
+
+# ========== Start ==========
 Start-Process -Wait powershell -verb runas -ArgumentList "Set-ItemProperty -Path REGISTRY::HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Policies\System -Name ConsentPromptBehaviorAdmin -Value 0"
 
 Write-Start -msg "Initilalizing Scoop..."
@@ -24,15 +31,42 @@ else
 }
 Write-Done
 
+
+Write-Start -msg "Initilalizing Chocolatey..."
+if (Get-Command choco -errorAction SilentlyContinue)
+{
+	Write-Warning "Scoop already installed"
+}
+else 
+{
+	Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
+}
+
+Write-Done
+
 Write-Start -msg "Installing Scoop Pakages..."
 	scoop bucket add java 	
 	scoop bucket add main
 	scoop bucket add extras
-	scoop install firefox brave googlechrome
+	scoop install googlechrome
 	scoop install neofetch which 
 	scoop install neovim vscode gcc nodejs openjdk python
 	scoop install notepadplusplus
+	scoop install extras/sublime-text
+	scoop install extras/postman
+	scoop install main/docker
 	scoop install 7zip
+
+Write-Start -msg "Installing Chocolatey Pakages..."
+	choco install git
+	choco install unikey
+	choco install discord
+	choco install zalopc
+
+
+Write-Done
+
+
 
 Write-Start -msg "Configuring VSCode"
 	code --install-extension ritwickdey.LiveServer --force
