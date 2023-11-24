@@ -55,6 +55,7 @@ Write-Start -msg "Installing Scoop Pakages..."
 	scoop install extras/sublime-text
 	scoop install extras/postman
 	scoop install main/docker
+	scoop install extras/everything
 	scoop install 7zip
 
 Write-Start -msg "Installing Chocolatey Pakages..."
@@ -62,6 +63,7 @@ Write-Start -msg "Installing Chocolatey Pakages..."
 	choco install unikey
 	choco install discord
 	choco install zalopc
+	choco install vcredist140
 
 
 Write-Done
