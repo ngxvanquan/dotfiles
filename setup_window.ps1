@@ -57,6 +57,8 @@ Write-Start -msg "Installing Scoop Pakages..."
 	scoop install main/docker
 	scoop install extras/everything
 	scoop install 7zip
+	scoop install main/postgresql
+	scoop install main/mysql
 
 Write-Start -msg "Installing Chocolatey Pakages..."
 	choco install git
