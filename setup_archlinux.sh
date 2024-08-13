@@ -50,34 +50,16 @@ Done
 
 startInstall "Installing Package!"
 countConfig
- 
+  
 sudo pacman -Sy --noconfirm git mpv neovim neofetch sox uwufetch vscode jdk17-openjdk gcc tmux unzip zip wget curl nodejs npm zsh 
 
 Done
 
-startConfig "Config NeoVim"
+startConfig "Install Lunar Vim"
 countConfig 
 
-nVim=/home/$user/.config/nvim
 
-if [ ! -d "$nVim" ];
-then
-	echo "$nVim directory does not exist."
-	echo "Create Directory and Copying"
-	cp -r ./nvim $nVim 
-else
-	echo "$nVim directory exists."
-	echo "Copying Success!"
-	cp -rf ./nvim /home/$user/.config
-fi
 
-Done
-
-startConfig "Config VS Code"
-countConfig
-
-code --install-extension vscodevim.vim 
-code --install-extension ritwickdey.LiveServer
 Done
 
 startConfig "zsh"
