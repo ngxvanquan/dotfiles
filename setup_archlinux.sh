@@ -51,16 +51,10 @@ Done
 startInstall "Installing Package!"
 countConfig
   
-sudo pacman -Sy --noconfirm git mpv neovim neofetch sox uwufetch vscode jdk17-openjdk gcc tmux unzip zip wget curl nodejs npm zsh 
+sudo pacman -Sy --noconfirm git mpv neovim neofetch sox tmux unzip zip wget curl nodejs npm zsh 
 
 Done
 
-startConfig "Install Lunar Vim"
-countConfig 
-
-
-
-Done
 
 startConfig "zsh"
 countConfig
