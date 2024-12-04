@@ -51,17 +51,18 @@ Done
 startInstall "Installing Package!"
 countConfig
   
-sudo pacman -Sy --noconfirm base-devel git mpv neovim neofetch sox tmux unzip zip wget curl nodejs npm zsh 
+sudo pacman -Sy --noconfirm base-devel git mpv neovim neofetch sox tmux unzip zip wget curl nodejs npm zsh fzf
 
 Done
 
 startInstall "Instaling Yay"
-countCOnfig
+countConfig
 
 cd /home/harutonguyen/
 git clone https://aur.archlinux.org/yay.git
 cd yay 
 makepkg -si --noconfirm
 cd /home/harutonguyen
+rm -rf yay
 
 Done
