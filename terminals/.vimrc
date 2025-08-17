@@ -1,4 +1,5 @@
 set number
+set relativenumber
 set cc=80
 set clipboard=unnamedplus
 set shiftwidth=4
